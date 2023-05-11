@@ -1,0 +1,15 @@
+
+.buttonDelete{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+.buttonDelete:hover{
+    background-color: rgba(245, 245, 245, 0.895);
+}
+mat-form-field{
+    display: block;
+    width: 20%;
+    margin: 0 40%;
+}

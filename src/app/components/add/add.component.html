@@ -1,0 +1,30 @@
+<header>
+  <h1 >Aggiungi un nuovo turno</h1>
+</header>
+
+<form [formGroup]="addform" (ngSubmit)="onSubmit()">
+
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input class="=matDatepicker" matInput [matDatepicker]="picker" name="date" formControlName="date">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Project</mat-label>
+    <mat-select name="project" formControlName="project">
+      <mat-option *ngFor="let project of userProject" [value]="project">
+        {{project.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Durata</mat-label>
+    <input matInput placeholder="durata del turno" formControlName="durata">
+  </mat-form-field>
+  <button class="my-button" color="primary" type="submit">Inserisci</button>
+  <button class="mat-flat-button" mat-button mat-dialog-close>Chiudi</button>
+</form>

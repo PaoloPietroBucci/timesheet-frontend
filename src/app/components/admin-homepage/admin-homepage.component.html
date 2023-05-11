@@ -1,0 +1,59 @@
+<mat-drawer-container >
+    <mat-drawer mode="side" opened>
+        <mat-list role="list">
+            <mat-list-item role="listitem">
+                <a routerLink="/users">Users</a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <a routerLink="/projects">Projects</a>
+            </mat-list-item>
+            <mat-list-item role="listitem">
+                <a routerLink="/stats">Statistiche</a>
+            </mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-user-homepage></app-user-homepage>
+        <div class="admin-control">
+            <button class="my-button" color="primary" (click)="addUser($event)">Assegna un utente a un
+                progetto</button>
+            <button class="my-button" (click)="addProject($event)">Aggiungi Progetto</button>
+            <div *ngIf="showAddProject">
+                <h2>Inserisci un nuovo progetto</h2>
+                <form [formGroup]="addProjectForm" (ngSubmit)="onSubmitProject()">
+                    <mat-form-field>
+                        <mat-label>project name</mat-label>
+                        <input matInput formControlName="name">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>project type</mat-label>
+                        <input matInput formControlName="type">
+                    </mat-form-field>
+                    <button class="my-button" type="submit">Aggiungi Progetto</button>
+                </form>
+            </div>
+            <div *ngIf="showAddUser">
+                <h2>Assegna utente e progetto</h2>
+                <form [formGroup]="addUserProjectForm" (ngSubmit)="onSubmitUserProgect()">
+                    <mat-form-field>
+                        <mat-label>User name</mat-label>
+                        <input matInput formControlName="userName">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>User Id</mat-label>
+                        <input matInput formControlName="userId">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Project Name</mat-label>
+                        <input matInput formControlName="projectName">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Project Id</mat-label>
+                        <input matInput formControlName="projectId">
+                    </mat-form-field>
+                    <button class="my-button" type="submit">Aggiungi Utente</button>
+                </form>
+            </div>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

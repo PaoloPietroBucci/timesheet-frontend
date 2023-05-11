@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+html{
+    height: 100%;
+}
+
+.wrapper{
+    height:90vh ;
+}
+
+a{
+    color: unset;
+    text-decoration: unset;
+}
+
+a:hover{
+    color: rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+}
+
+body{
+    font-family:Roboto, "Helvetica Neue", sans-serif;
+
+}
+
+header{
+
+    font-weight: bold;
+}
+
+h1{
+
+    font-weight: 500;
+    text-align: center;
+    margin: unset;
+    margin: 1em !important;
+    
+}
+main{
+    text-align: center;
+}
+
+button.my-button{
+    padding: unset;
+    width : 10em !important;
+    height: 3em;
+    background-color: rgb(20, 165, 243);
+    color: white;
+    border-radius: 100px;
+    border: none;
+    margin: 3em;
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgba(20, 165, 243, 0.8);
+}
+mat-toolbar{
+    position: relative;
+    background-color:rgb(20, 165, 243) !important ;
+    z-index: 0;
+
+}
+table{
+    min-width: unset !important;
+    width: 80%;
+    border-collapse: collapse !important;
+    border: solid 1px !important;
+    margin-left: 10%;
+    margin-right: 10%;
+    }
+
+
+footer{
+    border-top: solid 2px black;
+    height: 7vh;
+}
+footer ul{
+    font-style: italic;
+    display: flex;
+    list-style-type: none;
+    flex-direction: row;
+    column-gap: 10em;
+    justify-content: center;
+    align-items: end;
+
+    flex-wrap: wrap;
+    padding: none;
+    height: 50%;
+}
+
+mat-drawer{
+    height: 100%;
+    width: 10%;
+    padding-top: 2%;
+}
+mat-drawer mat-list-item{
+    text-align: center;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+caption{
+    display: block;
+    font-size: 100%;
+    font-style: oblique;
+    padding-top: 2em;
+    margin-bottom: 1%;
+}
+form{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+p{
+    margin: 1em !important;
+}
+.mat-mdc-paginator-container {
+    width: 50%;
+    justify-content: center !important;
+}
+#logo{
+    position: absolute;
+    top:0;
+    right: 0;
+    height: inherit ;
+}
+#hero{
+
+    position: relative;
+    top: 60vh;
+    height: 20vh;
+    width: auto;}

@@ -1,0 +1,77 @@
+
+  <h2>{{user?.name}} {{user?.surname}}</h2>
+  <p>Progetti assegnati:</p>
+  <ul class=" list">
+    <li *ngFor="let project of userProject">Name: {{project.name}}, Type: {{project.type}}</li>
+  </ul>
+  <p>Ore totali: {{totalHour}}</p>
+  <p>Nell'ultima settimana hai fatto : {{weeklyHour}}</p>
+
+  <section>
+    <mat-form-field class="example-full-width">
+      <mat-label>Cerca...</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="cerca..." #input>
+    </mat-form-field>
+
+    <button mat-button [matMenuTriggerFor]="filters">Filters</button>
+    <mat-menu #filters="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="projects">Projects</button>
+      <button mat-menu-item [matMenuTriggerFor]="datePicker">Date</button>
+    </mat-menu>
+
+    <mat-menu #projects="matMenu">
+      <p *ngFor="let project of userProject">
+        <mat-checkbox  (change)="doProjectFilter(project.name, $event)">{{project.name}}</mat-checkbox>
+      </p>
+    </mat-menu>  
+
+    <mat-menu  #datePicker="matMenu">
+      <mat-form-field appearece="fill">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="Start date" (dateInput)="saveDate($event)" (dateChange)="saveDate($event)">
+          <input matEndDate placeholder="End date" (dateInput)="doFilter" (dateChange)="doFilter($event)" >
+        </mat-date-range-input>
+        <mat-hint>DD-MM-YYYY – DD-MM-YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </mat-menu>
+  </section>
+
+  <caption>I tuoi turni</caption>
+  <table  mat-table [dataSource]="dataSource" matSort>
+
+
+    <ng-container matColumnDef="project">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header  sortActionDescription="Sort by project"> Progetto </th>
+      <td mat-cell *matCellDef="let row"> {{row.project.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by date"> Data </th>
+      <td mat-cell *matCellDef="let row"> {{row.date | date: "dd-MM-YYYY"}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="duration" class="cell">
+      <th mat-header-cell *matHeaderCellDef> Durata </th>
+      <td mat-cell *matCellDef="let row"> {{row.duration}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>
+      <td mat-cell *matCellDef="let row">
+        <button class="buttonDelete" (click)="deleteProject(row.id)"> Delete shift</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[7, 10, 15, 20]" aria-label="Select page of userTimetables"></mat-paginator>

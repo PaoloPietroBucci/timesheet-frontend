@@ -1,0 +1,72 @@
+<header>
+  <mat-toolbar color="primary">
+    WaithHero project
+    <img id="logo" src="../../../assets/logo.png" alt="Logo WaitHero">
+  </mat-toolbar>
+</header>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <mat-list role="list">
+
+      <mat-list-item role="listitem">
+        <a routerLink="/users">Users</a>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <a routerLink="/projects">Projects</a>
+      </mat-list-item>
+      <mat-list-item role="listitem">
+        <a routerLink="/admin-homepage/{{id}}">Home</a>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+    <h1>Statistiche aziendali</h1>
+
+    <caption>Ore totali per ogni progetto</caption>
+    <table class="table" mat-table [dataSource]="dataSourceTotalHour" matSort>
+
+
+      <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Project</th>
+        <td mat-cell *matCellDef="let row"> {{row.projectName}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="totalHour">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Hour</th>
+        <td mat-cell *matCellDef="let row"> {{row.sum}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsTab1"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsTab1;"></tr>
+
+    </table>
+
+    <button  class="my-button"  href="" id="lnkDownload" (click)="downloadExcelTotalHour()">Download stats</button>
+
+    <caption>Ore lavorate da ogni utente per ogni progetto</caption>
+
+    <table class="table" mat-table [dataSource]="dataSourceHourUserProject" matSort>
+
+      <ng-container matColumnDef="userFullName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+        <td mat-cell *matCellDef="let row"> {{row.userName}} {{row.userSurname}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="projectName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Project </th>
+        <td mat-cell *matCellDef="let row"> {{row.projectName}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="totalHour">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Hour </th>
+        <td mat-cell *matCellDef="let row"> {{row.sum}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsTab2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsTab2;"></tr>
+
+    </table>
+    <button class="my-button" href="" id="lnkDownload" (click)="downloadExcelHourUserProject()">Download stats</button>

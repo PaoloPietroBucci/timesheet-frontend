@@ -1,0 +1,7 @@
+.admin-control{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    width: 100% !important;
+    justify-content: center;
+}

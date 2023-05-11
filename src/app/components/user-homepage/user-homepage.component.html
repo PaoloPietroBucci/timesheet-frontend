@@ -1,0 +1,15 @@
+<header>
+    <mat-toolbar class="hide" color="primary">
+      WaithHero project
+      <img id="logo" src="../../../assets/logo.png" alt="Logo WaitHero">
+    </mat-toolbar>
+  </header>
+<h1>Home</h1>
+
+<main>
+    <app-user></app-user>
+    <div class="admin-control">
+        <button class="my-button" (click)="openDialog()" color="primary">Aggiungi ore</button>
+        <button class="my-button" href="" id="lnkDownload" (click)="downloadExcel()">download</button>
+    </div>
+</main>

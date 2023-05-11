@@ -1,0 +1,26 @@
+
+form {
+  margin: 5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  gap: 1rem;
+}
+.flatButton{
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3em;
+  margin: 1em;
+  display: block;
+  margin-left: 40%;
+  margin-right: 40%;
+  width: 20%;
+}
+.flatButton:hover{
+  background-color: rgba(245, 245, 245, 0.895);
+}
+
